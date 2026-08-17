@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CybersecurityRouteImport } from './routes/cybersecurity'
 import { Route as HubRouteImport } from './routes/hub'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CybersecurityRoute = CybersecurityRouteImport.update({
+  id: '/cybersecurity',
+  path: '/cybersecurity',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HubRoute = HubRouteImport.update({
@@ -25,27 +31,31 @@ const HubRoute = HubRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cybersecurity': typeof CybersecurityRoute
   '/hub': typeof HubRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cybersecurity': typeof CybersecurityRoute
   '/hub': typeof HubRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cybersecurity': typeof CybersecurityRoute
   '/hub': typeof HubRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hub'
+  fullPaths: '/' | '/cybersecurity' | '/hub'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hub'
-  id: '__root__' | '/' | '/hub'
+  to: '/' | '/cybersecurity' | '/hub'
+  id: '__root__' | '/' | '/cybersecurity' | '/hub'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CybersecurityRoute: typeof CybersecurityRoute
   HubRoute: typeof HubRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybersecurity': {
+      id: '/cybersecurity'
+      path: '/cybersecurity'
+      fullPath: '/cybersecurity'
+      preLoaderRoute: typeof CybersecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hub': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CybersecurityRoute: CybersecurityRoute,
   HubRoute: HubRoute,
 }
 export const routeTree = rootRouteImport
