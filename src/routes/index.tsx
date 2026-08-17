@@ -74,10 +74,9 @@ function BootScreen() {
   }, [booting]);
 
   useEffect(() => {
-    if (progress >= 100) {
-      const id = setTimeout(() => navigate({ to: "/hub" }), 420);
-      return () => clearTimeout(id);
-    }
+    if (progress < 100) return undefined;
+    const id = setTimeout(() => navigate({ to: "/hub" }), 420);
+    return () => clearTimeout(id);
   }, [progress, navigate]);
 
   return (
