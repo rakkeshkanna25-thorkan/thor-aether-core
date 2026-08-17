@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AiFeedRouteImport } from './routes/ai-feed'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as CybersecurityRouteImport } from './routes/cybersecurity'
+import { Route as HomeAutomationRouteImport } from './routes/home-automation'
 import { Route as HubRouteImport } from './routes/hub'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as VehicleRouteImport } from './routes/vehicle'
@@ -37,6 +38,11 @@ const CybersecurityRoute = CybersecurityRouteImport.update({
   path: '/cybersecurity',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeAutomationRoute = HomeAutomationRouteImport.update({
+  id: '/home-automation',
+  path: '/home-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HubRoute = HubRouteImport.update({
   id: '/hub',
   path: '/hub',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/ai-feed': typeof AiFeedRoute
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
+  '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
   '/research': typeof ResearchRoute
   '/vehicle': typeof VehicleRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/ai-feed': typeof AiFeedRoute
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
+  '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
   '/research': typeof ResearchRoute
   '/vehicle': typeof VehicleRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/ai-feed': typeof AiFeedRoute
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
+  '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
   '/research': typeof ResearchRoute
   '/vehicle': typeof VehicleRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/ai-feed'
     | '/analytics'
     | '/cybersecurity'
+    | '/home-automation'
     | '/hub'
     | '/research'
     | '/vehicle'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/ai-feed'
     | '/analytics'
     | '/cybersecurity'
+    | '/home-automation'
     | '/hub'
     | '/research'
     | '/vehicle'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/ai-feed'
     | '/analytics'
     | '/cybersecurity'
+    | '/home-automation'
     | '/hub'
     | '/research'
     | '/vehicle'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AiFeedRoute: typeof AiFeedRoute
   AnalyticsRoute: typeof AnalyticsRoute
   CybersecurityRoute: typeof CybersecurityRoute
+  HomeAutomationRoute: typeof HomeAutomationRoute
   HubRoute: typeof HubRoute
   ResearchRoute: typeof ResearchRoute
   VehicleRoute: typeof VehicleRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CybersecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home-automation': {
+      id: '/home-automation'
+      path: '/home-automation'
+      fullPath: '/home-automation'
+      preLoaderRoute: typeof HomeAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hub': {
       id: '/hub'
       path: '/hub'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiFeedRoute: AiFeedRoute,
   AnalyticsRoute: AnalyticsRoute,
   CybersecurityRoute: CybersecurityRoute,
+  HomeAutomationRoute: HomeAutomationRoute,
   HubRoute: HubRoute,
   ResearchRoute: ResearchRoute,
   VehicleRoute: VehicleRoute,
