@@ -64,7 +64,7 @@ export function useSeries(length: number, base: number, spread: number, interval
   useEffect(() => {
     const id = setInterval(() => {
       setSeries((prev) => {
-        const last = prev[prev.length - 1];
+        const last = prev[prev.length - 1] ?? { i: 0, v: base };
         const next = Math.max(
           base - spread * 2,
           Math.min(base + spread * 2, last.v + (Math.random() - 0.5) * spread)
