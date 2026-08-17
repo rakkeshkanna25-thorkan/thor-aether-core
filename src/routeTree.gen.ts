@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AiFeedRouteImport } from './routes/ai-feed'
 import { Route as CybersecurityRouteImport } from './routes/cybersecurity'
 import { Route as HubRouteImport } from './routes/hub'
 import { Route as ResearchRouteImport } from './routes/research'
@@ -17,6 +18,11 @@ import { Route as ResearchRouteImport } from './routes/research'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiFeedRoute = AiFeedRouteImport.update({
+  id: '/ai-feed',
+  path: '/ai-feed',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CybersecurityRoute = CybersecurityRouteImport.update({
@@ -37,12 +43,14 @@ const ResearchRoute = ResearchRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-feed': typeof AiFeedRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/hub': typeof HubRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-feed': typeof AiFeedRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/hub': typeof HubRoute
   '/research': typeof ResearchRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-feed': typeof AiFeedRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/hub': typeof HubRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cybersecurity' | '/hub' | '/research'
+  fullPaths: '/' | '/ai-feed' | '/cybersecurity' | '/hub' | '/research'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cybersecurity' | '/hub' | '/research'
-  id: '__root__' | '/' | '/cybersecurity' | '/hub' | '/research'
+  to: '/' | '/ai-feed' | '/cybersecurity' | '/hub' | '/research'
+  id: '__root__' | '/' | '/ai-feed' | '/cybersecurity' | '/hub' | '/research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiFeedRoute: typeof AiFeedRoute
   CybersecurityRoute: typeof CybersecurityRoute
   HubRoute: typeof HubRoute
   ResearchRoute: typeof ResearchRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-feed': {
+      id: '/ai-feed'
+      path: '/ai-feed'
+      fullPath: '/ai-feed'
+      preLoaderRoute: typeof AiFeedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cybersecurity': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiFeedRoute: AiFeedRoute,
   CybersecurityRoute: CybersecurityRoute,
   HubRoute: HubRoute,
   ResearchRoute: ResearchRoute,
