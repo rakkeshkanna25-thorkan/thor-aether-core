@@ -14,6 +14,7 @@ import { Route as AiFeedRouteImport } from './routes/ai-feed'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as CybersecurityRouteImport } from './routes/cybersecurity'
 import { Route as GameCenterRouteImport } from './routes/game-center'
+import { Route as HabitsRouteImport } from './routes/habits'
 import { Route as HomeAutomationRouteImport } from './routes/home-automation'
 import { Route as HubRouteImport } from './routes/hub'
 import { Route as PersonalRouteImport } from './routes/personal'
@@ -43,6 +44,11 @@ const CybersecurityRoute = CybersecurityRouteImport.update({
 const GameCenterRoute = GameCenterRouteImport.update({
   id: '/game-center',
   path: '/game-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HabitsRoute = HabitsRouteImport.update({
+  id: '/habits',
+  path: '/habits',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeAutomationRoute = HomeAutomationRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/game-center': typeof GameCenterRoute
+  '/habits': typeof HabitsRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
   '/personal': typeof PersonalRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/game-center': typeof GameCenterRoute
+  '/habits': typeof HabitsRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
   '/personal': typeof PersonalRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/game-center': typeof GameCenterRoute
+  '/habits': typeof HabitsRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
   '/personal': typeof PersonalRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/cybersecurity'
     | '/game-center'
+    | '/habits'
     | '/home-automation'
     | '/hub'
     | '/personal'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/cybersecurity'
     | '/game-center'
+    | '/habits'
     | '/home-automation'
     | '/hub'
     | '/personal'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/cybersecurity'
     | '/game-center'
+    | '/habits'
     | '/home-automation'
     | '/hub'
     | '/personal'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   AnalyticsRoute: typeof AnalyticsRoute
   CybersecurityRoute: typeof CybersecurityRoute
   GameCenterRoute: typeof GameCenterRoute
+  HabitsRoute: typeof HabitsRoute
   HomeAutomationRoute: typeof HomeAutomationRoute
   HubRoute: typeof HubRoute
   PersonalRoute: typeof PersonalRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/game-center'
       fullPath: '/game-center'
       preLoaderRoute: typeof GameCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/habits': {
+      id: '/habits'
+      path: '/habits'
+      fullPath: '/habits'
+      preLoaderRoute: typeof HabitsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home-automation': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnalyticsRoute: AnalyticsRoute,
   CybersecurityRoute: CybersecurityRoute,
   GameCenterRoute: GameCenterRoute,
+  HabitsRoute: HabitsRoute,
   HomeAutomationRoute: HomeAutomationRoute,
   HubRoute: HubRoute,
   PersonalRoute: PersonalRoute,
