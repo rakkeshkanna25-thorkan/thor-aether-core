@@ -281,6 +281,7 @@ function HabitsPage() {
                   <Area
                     type="monotone"
                     dataKey="rate"
+                    isAnimationActive={false}
                     stroke="var(--primary)"
                     strokeWidth={1.5}
                     fill="url(#habitFill)"
@@ -288,6 +289,7 @@ function HabitsPage() {
                   <Area
                     type="monotone"
                     dataKey="streak"
+                    isAnimationActive={false}
                     stroke="var(--chart-4)"
                     strokeWidth={1}
                     fill="none"
