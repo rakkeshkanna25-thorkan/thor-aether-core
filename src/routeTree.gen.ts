@@ -19,6 +19,7 @@ import { Route as HomeAutomationRouteImport } from './routes/home-automation'
 import { Route as HubRouteImport } from './routes/hub'
 import { Route as PersonalRouteImport } from './routes/personal'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as RulesRouteImport } from './routes/rules'
 import { Route as VehicleRouteImport } from './routes/vehicle'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +72,11 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RulesRoute = RulesRouteImport.update({
+  id: '/rules',
+  path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VehicleRoute = VehicleRouteImport.update({
   id: '/vehicle',
   path: '/vehicle',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/hub': typeof HubRoute
   '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
+  '/rules': typeof RulesRoute
   '/vehicle': typeof VehicleRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/hub': typeof HubRoute
   '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
+  '/rules': typeof RulesRoute
   '/vehicle': typeof VehicleRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/hub': typeof HubRoute
   '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
+  '/rules': typeof RulesRoute
   '/vehicle': typeof VehicleRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/hub'
     | '/personal'
     | '/research'
+    | '/rules'
     | '/vehicle'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/hub'
     | '/personal'
     | '/research'
+    | '/rules'
     | '/vehicle'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/hub'
     | '/personal'
     | '/research'
+    | '/rules'
     | '/vehicle'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   HubRoute: typeof HubRoute
   PersonalRoute: typeof PersonalRoute
   ResearchRoute: typeof ResearchRoute
+  RulesRoute: typeof RulesRoute
   VehicleRoute: typeof VehicleRoute
 }
 
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rules': {
+      id: '/rules'
+      path: '/rules'
+      fullPath: '/rules'
+      preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vehicle': {
       id: '/vehicle'
       path: '/vehicle'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   HubRoute: HubRoute,
   PersonalRoute: PersonalRoute,
   ResearchRoute: ResearchRoute,
+  RulesRoute: RulesRoute,
   VehicleRoute: VehicleRoute,
 }
 export const routeTree = rootRouteImport
