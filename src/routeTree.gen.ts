@@ -16,6 +16,7 @@ import { Route as CybersecurityRouteImport } from './routes/cybersecurity'
 import { Route as GameCenterRouteImport } from './routes/game-center'
 import { Route as HomeAutomationRouteImport } from './routes/home-automation'
 import { Route as HubRouteImport } from './routes/hub'
+import { Route as PersonalRouteImport } from './routes/personal'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as VehicleRouteImport } from './routes/vehicle'
 
@@ -54,6 +55,11 @@ const HubRoute = HubRouteImport.update({
   path: '/hub',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PersonalRoute = PersonalRouteImport.update({
+  id: '/personal',
+  path: '/personal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchRoute = ResearchRouteImport.update({
   id: '/research',
   path: '/research',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/game-center': typeof GameCenterRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
+  '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
   '/vehicle': typeof VehicleRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/game-center': typeof GameCenterRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
+  '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
   '/vehicle': typeof VehicleRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/game-center': typeof GameCenterRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
+  '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
   '/vehicle': typeof VehicleRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/game-center'
     | '/home-automation'
     | '/hub'
+    | '/personal'
     | '/research'
     | '/vehicle'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/game-center'
     | '/home-automation'
     | '/hub'
+    | '/personal'
     | '/research'
     | '/vehicle'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/game-center'
     | '/home-automation'
     | '/hub'
+    | '/personal'
     | '/research'
     | '/vehicle'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   GameCenterRoute: typeof GameCenterRoute
   HomeAutomationRoute: typeof HomeAutomationRoute
   HubRoute: typeof HubRoute
+  PersonalRoute: typeof PersonalRoute
   ResearchRoute: typeof ResearchRoute
   VehicleRoute: typeof VehicleRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HubRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/personal': {
+      id: '/personal'
+      path: '/personal'
+      fullPath: '/personal'
+      preLoaderRoute: typeof PersonalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research': {
       id: '/research'
       path: '/research'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   GameCenterRoute: GameCenterRoute,
   HomeAutomationRoute: HomeAutomationRoute,
   HubRoute: HubRoute,
+  PersonalRoute: PersonalRoute,
   ResearchRoute: ResearchRoute,
   VehicleRoute: VehicleRoute,
 }
