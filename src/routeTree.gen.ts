@@ -14,9 +14,12 @@ import { Route as AiFeedRouteImport } from './routes/ai-feed'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as CybersecurityRouteImport } from './routes/cybersecurity'
 import { Route as GameCenterRouteImport } from './routes/game-center'
+import { Route as HabitsRouteImport } from './routes/habits'
 import { Route as HomeAutomationRouteImport } from './routes/home-automation'
 import { Route as HubRouteImport } from './routes/hub'
+import { Route as PersonalRouteImport } from './routes/personal'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as RulesRouteImport } from './routes/rules'
 import { Route as VehicleRouteImport } from './routes/vehicle'
 
 const IndexRoute = IndexRouteImport.update({
@@ -44,6 +47,11 @@ const GameCenterRoute = GameCenterRouteImport.update({
   path: '/game-center',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HabitsRoute = HabitsRouteImport.update({
+  id: '/habits',
+  path: '/habits',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeAutomationRoute = HomeAutomationRouteImport.update({
   id: '/home-automation',
   path: '/home-automation',
@@ -54,9 +62,19 @@ const HubRoute = HubRouteImport.update({
   path: '/hub',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PersonalRoute = PersonalRouteImport.update({
+  id: '/personal',
+  path: '/personal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchRoute = ResearchRouteImport.update({
   id: '/research',
   path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RulesRoute = RulesRouteImport.update({
+  id: '/rules',
+  path: '/rules',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VehicleRoute = VehicleRouteImport.update({
@@ -71,9 +89,12 @@ export interface FileRoutesByFullPath {
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/game-center': typeof GameCenterRoute
+  '/habits': typeof HabitsRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
+  '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
+  '/rules': typeof RulesRoute
   '/vehicle': typeof VehicleRoute
 }
 export interface FileRoutesByTo {
@@ -82,9 +103,12 @@ export interface FileRoutesByTo {
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/game-center': typeof GameCenterRoute
+  '/habits': typeof HabitsRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
+  '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
+  '/rules': typeof RulesRoute
   '/vehicle': typeof VehicleRoute
 }
 export interface FileRoutesById {
@@ -94,9 +118,12 @@ export interface FileRoutesById {
   '/analytics': typeof AnalyticsRoute
   '/cybersecurity': typeof CybersecurityRoute
   '/game-center': typeof GameCenterRoute
+  '/habits': typeof HabitsRoute
   '/home-automation': typeof HomeAutomationRoute
   '/hub': typeof HubRoute
+  '/personal': typeof PersonalRoute
   '/research': typeof ResearchRoute
+  '/rules': typeof RulesRoute
   '/vehicle': typeof VehicleRoute
 }
 export interface FileRouteTypes {
@@ -107,9 +134,12 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/cybersecurity'
     | '/game-center'
+    | '/habits'
     | '/home-automation'
     | '/hub'
+    | '/personal'
     | '/research'
+    | '/rules'
     | '/vehicle'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -118,9 +148,12 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/cybersecurity'
     | '/game-center'
+    | '/habits'
     | '/home-automation'
     | '/hub'
+    | '/personal'
     | '/research'
+    | '/rules'
     | '/vehicle'
   id:
     | '__root__'
@@ -129,9 +162,12 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/cybersecurity'
     | '/game-center'
+    | '/habits'
     | '/home-automation'
     | '/hub'
+    | '/personal'
     | '/research'
+    | '/rules'
     | '/vehicle'
   fileRoutesById: FileRoutesById
 }
@@ -141,9 +177,12 @@ export interface RootRouteChildren {
   AnalyticsRoute: typeof AnalyticsRoute
   CybersecurityRoute: typeof CybersecurityRoute
   GameCenterRoute: typeof GameCenterRoute
+  HabitsRoute: typeof HabitsRoute
   HomeAutomationRoute: typeof HomeAutomationRoute
   HubRoute: typeof HubRoute
+  PersonalRoute: typeof PersonalRoute
   ResearchRoute: typeof ResearchRoute
+  RulesRoute: typeof RulesRoute
   VehicleRoute: typeof VehicleRoute
 }
 
@@ -184,6 +223,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GameCenterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/habits': {
+      id: '/habits'
+      path: '/habits'
+      fullPath: '/habits'
+      preLoaderRoute: typeof HabitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home-automation': {
       id: '/home-automation'
       path: '/home-automation'
@@ -198,11 +244,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HubRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/personal': {
+      id: '/personal'
+      path: '/personal'
+      fullPath: '/personal'
+      preLoaderRoute: typeof PersonalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research': {
       id: '/research'
       path: '/research'
       fullPath: '/research'
       preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rules': {
+      id: '/rules'
+      path: '/rules'
+      fullPath: '/rules'
+      preLoaderRoute: typeof RulesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/vehicle': {
@@ -221,9 +281,12 @@ const rootRouteChildren: RootRouteChildren = {
   AnalyticsRoute: AnalyticsRoute,
   CybersecurityRoute: CybersecurityRoute,
   GameCenterRoute: GameCenterRoute,
+  HabitsRoute: HabitsRoute,
   HomeAutomationRoute: HomeAutomationRoute,
   HubRoute: HubRoute,
+  PersonalRoute: PersonalRoute,
   ResearchRoute: ResearchRoute,
+  RulesRoute: RulesRoute,
   VehicleRoute: VehicleRoute,
 }
 export const routeTree = rootRouteImport
