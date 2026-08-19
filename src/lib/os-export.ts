@@ -9,11 +9,11 @@ export type ExportPayload = {
   /** File + document title, e.g. "SECURITY_REPORT" */
   title: string;
   /** Module code, printed in the docx header */
-  module?: string;
+  module?: string | undefined;
   /** Tabular data — sheet rows and docx table rows */
   rows: ExportRow[];
   /** Optional narrative paragraphs for the Word document */
-  notes?: string[];
+  notes?: string[] | undefined;
 };
 
 function slug(value: string) {
